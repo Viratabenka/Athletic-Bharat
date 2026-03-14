@@ -95,7 +95,7 @@ export default function BillingPage() {
           amount,
           order_id: orderId,
           currency,
-          name: 'Bharat Athlete',
+          name: 'Athletic Bharat',
           description: plan === 'TOURNAMENT_PASS' ? 'Tournament Pass (3 months)' : 'Annual Pro (12 months)',
           prefill: { email: user?.email ?? undefined, name: user?.name ?? undefined },
           handler: async (res) => {

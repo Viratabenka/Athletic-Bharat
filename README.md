@@ -1,4 +1,4 @@
-# Bharat Athlete
+# Athletic Bharat
 
 Production-quality MVP for a multi-tenant SaaS web app for Indian schools to manage yearly sports tournaments.
 
@@ -34,13 +34,13 @@ docker compose up -d
 ```
 
 Your `.env` can use:  
-`DATABASE_URL=postgresql://bharatathlete:bharatathlete@localhost:5432/bharatathlete`
+`DATABASE_URL=postgresql://athleticbharat:athleticbharat@localhost:5432/athleticbharat`
 
 **Option B – Without Docker**
 
-- **Local PostgreSQL:** Install [PostgreSQL](https://www.postgresql.org/download/windows/) on Windows. Create a database (e.g. `bharatathlete`) and a user with password, then set in `.env`:
+- **Local PostgreSQL:** Install [PostgreSQL](https://www.postgresql.org/download/windows/) on Windows. Create a database (e.g. `athleticbharat`) and a user with password, then set in `.env`:
   ```env
-  DATABASE_URL=postgresql://USERNAME:PASSWORD@localhost:5432/bharatathlete
+  DATABASE_URL=postgresql://USERNAME:PASSWORD@localhost:5432/athleticbharat
   ```
 - **Cloud Postgres (free tier):** Use [Neon](https://neon.tech), [Supabase](https://supabase.com), or [Railway](https://railway.app). Create a project, get the connection string, and set `DATABASE_URL` in `.env`.
 

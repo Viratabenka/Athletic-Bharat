@@ -57,8 +57,8 @@ export default function ContactPage() {
       </Card>
       <p className="text-center text-sm text-muted-foreground mt-6">
         Or email us at{' '}
-        <a href="mailto:support@bharatathlete.com" className="underline hover:text-foreground">
-          support@bharatathlete.com
+        <a href="mailto:support@athleticbharat.com" className="underline hover:text-foreground">
+          support@athleticbharat.com
         </a>
       </p>
     </div>

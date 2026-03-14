@@ -14,9 +14,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: 'Blog | Bharat Athlete' };
+  if (!post) return { title: 'Blog | Athletic Bharat' };
   return {
-    title: `${post.title} | Bharat Athlete`,
+    title: `${post.title} | Athletic Bharat`,
     description: post.description,
   };
 }

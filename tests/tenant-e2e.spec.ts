@@ -49,7 +49,7 @@ test.describe('Tenant E2E', () => {
     await signInClicked;
     await authResponse;
     await expect(page).toHaveURL(/\/app\/dashboard/, { timeout: 15_000 });
-    await expect(page.getByText('Bharat Athlete')).toBeVisible();
+    await expect(page.getByText('Athletic Bharat')).toBeVisible();
 
     await page.getByRole('link', { name: 'Students', exact: true }).click();
     await expect(page).toHaveURL(/\/app\/students/);

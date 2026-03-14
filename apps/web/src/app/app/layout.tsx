@@ -26,7 +26,7 @@ export default async function AppLayout({
       }}
     >
       <header className="border-b px-4 py-3 flex items-center gap-4 bg-background/60 backdrop-blur-sm">
-        <Link href="/app/dashboard" className="font-semibold">Bharat Athlete</Link>
+        <Link href="/app/dashboard" className="font-semibold">Athletic Bharat</Link>
         <nav className="flex gap-4">
           <Link href="/app/dashboard" className="text-sm text-muted-foreground hover:text-foreground">Dashboard</Link>
           <Link href="/app/students" className="text-sm text-muted-foreground hover:text-foreground">Students</Link>

@@ -53,7 +53,7 @@ export function CertificateTemplate({
         aria-hidden
       />
       <div className="absolute inset-0 flex flex-col p-6 md:p-10 text-foreground">
-        {/* Top row: school logo (left) and Bharat Athlete logo (right) */}
+        {/* Top row: school logo (left) and Athletic Bharat logo (right) */}
         <div className="flex items-center justify-between mb-4">
           <div className="h-14 w-32 flex items-center justify-start">
             {logoUrl ? (
@@ -62,7 +62,7 @@ export function CertificateTemplate({
               <span className="text-sm font-medium text-muted-foreground">{tenantName}</span>
             )}
           </div>
-          <img src={BALOGO} alt="Bharat Athlete" className="h-10 w-auto object-contain opacity-90" />
+          <img src={BALOGO} alt="Athletic Bharat" className="h-10 w-auto object-contain opacity-90" />
         </div>
 
         {/* Body */}

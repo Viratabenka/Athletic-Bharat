@@ -6,9 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata = {
-  title: 'Bharat Athlete — School Sports Tournament Management',
+  title: 'Athletic Bharat — School Sports Tournament Management',
   description: 'Run brackets, scorecards, and results for your school sports events. One month free trial.',
-  openGraph: { title: 'Bharat Athlete — School Sports Tournament Management', description: 'Run brackets, scorecards, and results for your school sports events.' },
+  openGraph: { title: 'Athletic Bharat — School Sports Tournament Management', description: 'Run brackets, scorecards, and results for your school sports events.' },
 };
 
 export default async function HomePage() {
@@ -72,7 +72,7 @@ export default async function HomePage() {
             <CardContent className="pt-6">
               <p className="font-medium">4. Certificate generation</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Generate certificates from leaderboards with your school logo and Bharat Athlete branding. Configurable signature lines. Print or download as PDF.
+                Generate certificates from leaderboards with your school logo and Athletic Bharat branding. Configurable signature lines. Print or download as PDF.
               </p>
             </CardContent>
           </Card>

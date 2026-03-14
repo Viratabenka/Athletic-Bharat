@@ -6,7 +6,7 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Bharat Athlete',
+  title: 'Athletic Bharat',
   description: 'Sports tournament management for Indian schools',
   icons: {
     icon: [{ url: '/logo-icon.svg', type: 'image/svg+xml' }],

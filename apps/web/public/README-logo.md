@@ -1,6 +1,6 @@
-# Bharat Athlete logo assets
+# Athletic Bharat logo assets
 
-Vector logos for the Bharat Athlete SaaS platform (sports tournament management for schools in India).
+Vector logos for the Athletic Bharat SaaS platform (sports tournament management for schools in India).
 
 ## Files
 
@@ -18,7 +18,7 @@ Vector logos for the Bharat Athlete SaaS platform (sports tournament management 
 
 ## Usage
 
-- **Header:** `<img src="/logo.svg" alt="Bharat Athlete" width="180" height="40" />` or Next.js `Image`.
+- **Header:** `<img src="/logo.svg" alt="Athletic Bharat" width="180" height="40" />` or Next.js `Image`.
 - **Dark header:** Use `logo-dark-bg.svg` when the header background is dark.
 - **Favicon:** Set in app metadata to `/logo-icon.svg` (SVG favicon supported in modern browsers).
 - **App icon:** Use `logo-icon.svg` or export a 512×512 PNG from it for PWA/app store.
@@ -26,5 +26,5 @@ Vector logos for the Bharat Athlete SaaS platform (sports tournament management 
 ## Design
 
 - **Icon:** **Talent on stage:** a **stage** (circle), **spotlight** rays from above, and an **athlete in victory pose** (arms raised). A curved **platform** line at the base completes the stage. Ashoka Chakra (12 spokes) keeps Indian identity. The mark stands for bringing real talent to the front, giving Indian athletes a stage, and making them famous. Flat, no gradients.
-- **Wordmark:** “Bharat” in primary blue, “Athlete” in accent orange (emphasized). System sans-serif, bold.
+- **Wordmark:** "Athletic" in primary blue, "Bharat" in accent orange (emphasized). System sans-serif, bold.
 - **Scalable:** All assets are SVG; scale to any size without quality loss.

@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata = {
-  title: 'Features | Bharat Athlete',
+  title: 'Features | Athletic Bharat',
   description: 'Sports tournament management: brackets, scorecards, multi-sport support.',
 };
 
@@ -49,7 +49,7 @@ export default function FeaturesPage() {
           <CardContent className="pt-6">
             <h2 className="font-semibold">Certificate generation</h2>
             <p className="text-sm text-muted-foreground mt-2">
-              Generate certificates from category leaderboards with your school logo and Bharat Athlete branding. Configurable signature lines (e.g. Principal, Sports Teacher). Print or download as PDF.
+              Generate certificates from category leaderboards with your school logo and Athletic Bharat branding. Configurable signature lines (e.g. Principal, Sports Teacher). Print or download as PDF.
             </p>
           </CardContent>
         </Card>

@@ -17,7 +17,7 @@ export default async function PlatformLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b px-4 py-3 flex items-center gap-4">
-        <Link href="/platform/tenants" className="font-semibold">Bharat Athlete (Platform)</Link>
+        <Link href="/platform/tenants" className="font-semibold">Athletic Bharat (Platform)</Link>
         <nav className="flex gap-4">
           <Link href="/platform/tenants" className="text-sm text-muted-foreground hover:text-foreground">Tenants</Link>
           <Link href="/platform/sports" className="text-sm text-muted-foreground hover:text-foreground">Sports Library</Link>
