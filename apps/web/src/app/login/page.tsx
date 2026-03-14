@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Suspense } from 'react';
+import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -60,15 +61,17 @@ function LoginForm() {
             {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
           </div>
           <div>
-            <Label htmlFor="password">Password</Label>
+            <div className="flex items-center justify-between mt-1">
+              <Label htmlFor="password">Password</Label>
+              <Link href="/forgot-password" className="text-xs text-muted-foreground hover:text-foreground underline">
+                Forgot password?
+              </Link>
+            </div>
             <Input id="password" type="password" {...register('password')} className="mt-1" />
             {errors.password && <p className="text-sm text-destructive mt-1">{errors.password.message}</p>}
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
           <Button type="submit" className="w-full">Sign in</Button>
-          <p className="text-xs text-muted-foreground mt-2">
-            API (pnpm dev:api) and seed (pnpm db:seed) required. Demo: <strong>admin@platform.local</strong> / <strong>Admin@1234</strong> — password is case-sensitive.
-          </p>
         </form>
       </CardContent>
     </Card>

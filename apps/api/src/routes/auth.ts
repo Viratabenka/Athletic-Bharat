@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import { createRequire } from 'node:module';
+import { randomBytes } from 'node:crypto';
 import { prisma } from '../lib/prisma.js';
 import { z } from 'zod';
 import { signupSchema } from '../schemas/tenant.js';
@@ -13,6 +14,15 @@ const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
 });
+
+const forgotPasswordSchema = z.object({ email: z.string().email() });
+
+const resetPasswordSchema = z.object({
+  token: z.string().min(1, 'Token required'),
+  newPassword: z.string().min(8, 'Password must be at least 8 characters'),
+});
+
+const RESET_TOKEN_EXPIRY_HOURS = 1;
 
 export default async function authRoutes(app: FastifyInstance) {
   app.post<{ Body: { email?: string; password?: string } }>('/auth/login', async (request, reply) => {
@@ -98,5 +108,55 @@ export default async function authRoutes(app: FastifyInstance) {
       },
     });
     return reply.status(201).send({ ok: true, tenantId: tenant.id, message: 'Account created. You can sign in now.' });
+  });
+
+  app.post<{ Body: { email?: string } }>('/auth/forgot-password', async (request, reply) => {
+    const body = forgotPasswordSchema.safeParse(request.body);
+    if (!body.success) {
+      return reply.status(400).send({ error: 'Valid email required', code: 'VALIDATION_ERROR' });
+    }
+    const user = await prisma.user.findUnique({ where: { email: body.data.email } });
+    if (!user) {
+      return reply.send({ ok: true, message: 'If an account exists for this email, you will receive a reset link.' });
+    }
+    const token = randomBytes(32).toString('hex');
+    const expiresAt = new Date();
+    expiresAt.setHours(expiresAt.getHours() + RESET_TOKEN_EXPIRY_HOURS);
+    await prisma.passwordResetToken.create({
+      data: { userId: user.id, token, expiresAt },
+    });
+    const appUrl = process.env.APP_URL ?? 'http://localhost:3000';
+    const resetLink = `${appUrl}/reset-password?token=${token}`;
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[forgot-password] Reset link for', user.email, ':', resetLink);
+    }
+    return reply.send({
+      ok: true,
+      message: 'If an account exists for this email, you will receive a reset link.',
+      ...(process.env.NODE_ENV !== 'production' && { resetLink }),
+    });
+  });
+
+  app.post<{ Body: { token?: string; newPassword?: string } }>('/auth/reset-password', async (request, reply) => {
+    const body = resetPasswordSchema.safeParse(request.body);
+    if (!body.success) {
+      return reply.status(400).send({
+        error: body.error.errors[0]?.message ?? 'Validation failed',
+        code: 'VALIDATION_ERROR',
+      });
+    }
+    const record = await prisma.passwordResetToken.findUnique({
+      where: { token: body.data.token },
+      include: { user: true },
+    });
+    if (!record || record.expiresAt < new Date()) {
+      return reply.status(400).send({ error: 'Invalid or expired reset link. Please request a new one.', code: 'INVALID_TOKEN' });
+    }
+    const passwordHash = await bcryptHash(body.data.newPassword, 10);
+    await prisma.$transaction([
+      prisma.user.update({ where: { id: record.userId }, data: { passwordHash } }),
+      prisma.passwordResetToken.delete({ where: { id: record.id } }),
+    ]);
+    return reply.send({ ok: true, message: 'Password reset. You can sign in with your new password.' });
   });
 }
